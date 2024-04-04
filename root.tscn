@@ -1,36 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw8yrrabtb44l"]
+[gd_scene load_steps=4 format=3 uid="uid://bw8yrrabtb44l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wy65"]
-size = Vector2(29, 6)
+[ext_resource type="Texture2D" uid="uid://dhoqabf4s0na3" path="res://images/grass.png" id="1_i0vww"]
+[ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_n3q83"]
 
-[node name="Root" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqee"]
+size = Vector2(104, 13.5)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Level" type="Node2D"]
+position = Vector2(-2.61469, -10.8609)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-7.5, -12)
-shape = SubResource("RectangleShape2D_8wy65")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/CollisionShape2D"]
-position = Vector2(15.5, 5)
-shape = SubResource("RectangleShape2D_8wy65")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(89.6147, 163.861)
+shape = SubResource("RectangleShape2D_6qqee")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/CollisionShape2D/CollisionShape2D"]
-position = Vector2(-8, -14)
-shape = SubResource("RectangleShape2D_8wy65")
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(1, -2)
+scale = Vector2(0.103271, 0.0137939)
+texture = ExtResource("1_i0vww")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/CollisionShape2D"]
-position = Vector2(-7.5, -12)
-shape = SubResource("RectangleShape2D_8wy65")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/CollisionShape2D/CollisionShape2D2"]
-position = Vector2(15.5, 5)
-shape = SubResource("RectangleShape2D_8wy65")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/CollisionShape2D/CollisionShape2D2/CollisionShape2D"]
-position = Vector2(-8, -14)
-shape = SubResource("RectangleShape2D_8wy65")
-
-[node name="Collab works" type="Node2D" parent="."]
-
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_n3q83")]
