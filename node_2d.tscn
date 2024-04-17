@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://degu3kkdrfyiy"]
+
+[ext_resource type="PackedScene" uid="uid://dlicuxk80g6gp" path="res://player_re.tscn" id="1_utr6g"]
+[ext_resource type="PackedScene" uid="uid://dbb2rssbn8jca" path="res://bullet.tscn" id="2_ublfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr8l"]
+size = Vector2(1128, 215)
+
+[node name="Node2D" type="Node2D"]
+light_mask = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 2
+position = Vector2(675, 510)
+shape = SubResource("RectangleShape2D_cbr8l")
+
+[node name="PlayerRe" parent="." instance=ExtResource("1_utr6g")]
+visibility_layer = 7
+
+[node name="bullet" parent="PlayerRe" instance=ExtResource("2_ublfx")]

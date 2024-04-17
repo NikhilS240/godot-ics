@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbb2rssbn8jca"]
+
+[ext_resource type="Script" path="res://fireballsc.gd" id="1_vggrb"]
+[ext_resource type="Texture2D" uid="uid://cg80ejhnw4vp8" path="res://images/SSBBloodlustFireball.webp" id="2_ikrwg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ar8c"]
+size = Vector2(496.262, 593.886)
+
+[node name="bullet" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_vggrb")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(498.75, 202.25)
+scale = Vector2(0.078125, 0.076875)
+texture = ExtResource("2_ikrwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Sprite2D"]
+position = Vector2(11.0693, 12.0002)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1ar8c")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="Area2D" method="_on_visible_on_screen_notifier_2d_screen_exited"]
