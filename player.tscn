@@ -1,27 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://csm8ac2ayp4us"]
+[gd_scene load_steps=4 format=3 uid="uid://csm8ac2ayp4us"]
 
 [ext_resource type="Script" path="res://CharacterBody.gd" id="1_6k58f"]
 [ext_resource type="Texture2D" uid="uid://cdenmkxufn2ke" path="res://dog.svg" id="4_ehks6"]
-
-[sub_resource type="GDScript" id="GDScript_xgpcm"]
-script/source = "extends Node
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4tco"]
 size = Vector2(187.754, 186)
 
 [node name="p1" type="Node"]
-script = SubResource("GDScript_xgpcm")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(614, -89)
@@ -33,18 +18,18 @@ script = ExtResource("1_6k58f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 light_mask = 2
 visibility_layer = 19
-position = Vector2(159.302, -172)
+position = Vector2(164.375, 342)
 shape = SubResource("RectangleShape2D_a4tco")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(164.375, -174)
+position = Vector2(166.009, 348.5)
 scale = Vector2(0.255213, 0.215)
 texture = ExtResource("4_ehks6")
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(-191.771, -321)
+position = Vector2(99.4369, 100)
 scale = Vector2(1.01466, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
-position = Vector2(160.317, -330)
+position = Vector2(161.951, 192.5)
 scale = Vector2(3.55, 3.55)

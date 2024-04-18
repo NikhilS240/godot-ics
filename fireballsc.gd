@@ -2,12 +2,19 @@ extends Area2D
 
 const SPEED = 150
 var velocity = Vector2()
+var direction = 1;
+
 func _ready():
 	pass
 
+func set_fireball_direction(dir):
+	direction = dir
+	if dir == 1:
+		pass #throw animated script here
+		
 
 func _physics_process(delta):
-	velocity.x = SPEED * delta
+	velocity.x = SPEED * delta * direction
 	translate(velocity)
 
 

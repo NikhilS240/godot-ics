@@ -37,7 +37,7 @@
 	
 extends CharacterBody2D
 
-
+@export var speed = 300
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000
 @export var gravity = 25
@@ -102,23 +102,40 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_down"):
 		var fireball = FIREBALL.instantiate()
+		if sign($Marker2D.position.x) == 1:
+			fireball.set_fireball_direction(1)
+		else:
+			fireball.set_fireball_direction(-1)
 		get_parent().add_child(fireball)
-		fireball.position = $Marker2D.global_position
+		fireball.position = $Marker2D.position
 
-	if Input.is_action_just_pressed("ui_copy"):
-		pass
+
 
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+	#var direction = Input.get_axis("ui_left", "ui_right")
+	#if direction:
+		#velocity.x = direction * SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
 #
+
+
+	
+	if Input.is_action_pressed("ui_right"):
+		velocity.x = speed
+		if sign($Marker2D.position.x) == -1:
+			$Marker2D.position.x *= -1
+	elif Input.is_action_pressed("ui_left"):
+	#animation.play("idle")
+		velocity.x = -speed
+		if sign($Marker2D.position.x) == 1:
+			$Marker2D.position.x *= -1
+	else:
+		velocity.x = 0
+		
+	move_and_slide()
 #
 #
 #extends CharacterBody2D
