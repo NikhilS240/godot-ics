@@ -13,7 +13,7 @@ scale = Vector2(0.997017, 1.02489)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
-collision_mask = 23
+collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(586.364, 550.167)

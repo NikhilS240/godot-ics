@@ -3,12 +3,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
-
-
 # Compare the positions
-
-	
 
 
 var player_chase = false
@@ -28,16 +23,25 @@ var is_dead = false
 #scrpt for enemies right of player
 func _ready():
 	print_tree()
+
 	
-func _dead():
+func dead():
 	is_dead = true
-	$Sprite.texture = load("res://images/grass.png")
-	speed = 0;
-	print("collision detected")
+	#$Sprite.texture = load("res://images/grass.png")
+	#speed = 0;
+	#$AnimatedSprite.play("dead")
+	#print("collision detected")
+	print("St2")
+	queue_free()
+	
+	#$CollisionShape2D.disable = true;
 
 var fixed_y_value = 100  # Set the desired y-coordinate
 func _physics_process(delta):
 	if is_dead == false:
+	
+		#print("sf")
+	
 		if player_chase:
 			var x_movement = Jf.total_movement_x
 			#print("Accessed Total X Movement from Jfe: ", x_movement)
