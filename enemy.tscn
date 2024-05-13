@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://co5tns1ox8hyy"]
+[gd_scene load_steps=6 format=3 uid="uid://co5tns1ox8hyy"]
 
 [ext_resource type="Script" path="res://enemy-mov.gd" id="1_b3mi1"]
+[ext_resource type="Texture2D" uid="uid://cdenmkxufn2ke" path="res://dog.svg" id="2_xmfc6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pq68h"]
 
@@ -30,8 +31,13 @@ debug_color = Color(0.894118, 0, 0.784314, 0.419608)
 position = Vector2(601, 111)
 shape = SubResource("CircleShape2D_di7ux")
 
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(601, 106)
+scale = Vector2(0.31125, 0.24)
+texture = ExtResource("2_xmfc6")
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy"]
-position = Vector2(462, 111)
+position = Vector2(601, 103)
 scale = Vector2(9.1, 10.9)
 
 [connection signal="body_entered" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_body_entered"]

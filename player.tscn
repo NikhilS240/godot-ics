@@ -27,7 +27,7 @@ scale = Vector2(0.255213, 0.215)
 texture = ExtResource("4_ehks6")
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(99.4369, 100)
+position = Vector2(-333.824, 219)
 scale = Vector2(1.01466, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
