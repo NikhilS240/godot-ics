@@ -28,7 +28,7 @@ scale = Vector2(0.17625, 0.154271)
 texture = ExtResource("2_qbx80")
 
 [node name="Marker2D" type="Marker2D" parent="PlayerRe"]
-position = Vector2(-1263.75, -785.75)
+position = Vector2(-45.75, -114.75)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

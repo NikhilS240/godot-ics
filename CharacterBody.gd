@@ -10,7 +10,8 @@
 #
 #func _physics_process(delta):
 	#
-	#
+	
+	
 	## Add the gravity.
 	#if not is_on_floor():
 		#velocity.y += gravity * delta
@@ -68,6 +69,9 @@ const FIREBALL = preload("res://bullet.tscn")
 
 func _physics_process(delta):
 	var on_floor = is_on_floor()
+	
+	
+	
 
 	if on_floor:
 		coyote_time = coyote_time_duration
@@ -102,12 +106,12 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_down"):
 		var fireball = FIREBALL.instantiate()
-		if sign($Marker2D.position.x) == 1:
-			fireball.set_fireball_direction(1)
-		else:
-			fireball.set_fireball_direction(-1)
+		#if sign($Marker2D.position.x) == 1:
+			#fireball.set_fireball_direction(1)
+		#else:
+			#fireball.set_fireball_direction(-1)
 		get_parent().add_child(fireball)
-		fireball.position = $Marker2D.position
+		fireball.position = $Marker2D.global_position
 
 
 
@@ -125,13 +129,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = speed
-		if sign($Marker2D.position.x) == -1:
-			$Marker2D.position.x *= -1
+		#if sign($Marker2D.position.x) == -1:
+			#$Marker2D.position.x *= -1
 	elif Input.is_action_pressed("ui_left"):
 	#animation.play("idle")
 		velocity.x = -speed
-		if sign($Marker2D.position.x) == 1:
-			$Marker2D.position.x *= -1
+		#if sign($Marker2D.position.x) == 1:
+			#$Marker2D.position.x *= -1
 	else:
 		velocity.x = 0
 		
