@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://co5tns1ox8hyy"]
 
 [ext_resource type="Script" path="res://enemy-mov.gd" id="1_b3mi1"]
-[ext_resource type="Texture2D" uid="uid://cdenmkxufn2ke" path="res://dog.svg" id="2_xmfc6"]
+[ext_resource type="Texture2D" uid="uid://mf13ek2xfh7l" path="res://images/video game/character and enemy designs/goblin villian.png" id="2_yjyma"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pq68h"]
 
@@ -34,7 +34,7 @@ shape = SubResource("CircleShape2D_di7ux")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 position = Vector2(601, 106)
 scale = Vector2(0.31125, 0.24)
-texture = ExtResource("2_xmfc6")
+texture = ExtResource("2_yjyma")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy"]
 position = Vector2(601, 103)

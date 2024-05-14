@@ -1,10 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://csm8ac2ayp4us"]
+[gd_scene load_steps=11 format=3 uid="uid://csm8ac2ayp4us"]
 
 [ext_resource type="Script" path="res://CharacterBody.gd" id="1_6k58f"]
-[ext_resource type="Texture2D" uid="uid://cdenmkxufn2ke" path="res://dog.svg" id="4_ehks6"]
+[ext_resource type="Texture2D" uid="uid://d2u4thwdd6x8w" path="res://images/video game/character animation and frames/character standing/original.png" id="2_fh3fh"]
+[ext_resource type="Texture2D" uid="uid://cnvfgmu0fdsg7" path="res://images/video game/character animation and frames/jumping static/frame 2 jumping_.png" id="3_bfi1g"]
+[ext_resource type="Texture2D" uid="uid://cfrd2fay6dl5e" path="res://images/video game/character animation and frames/jumping static/frame 3 jumping_.png" id="4_6bcio"]
+[ext_resource type="Texture2D" uid="uid://6r4srq1icva0" path="res://images/video game/character animation and frames/jumping static/frame 4 jumping.png" id="5_fqrg0"]
+[ext_resource type="Texture2D" uid="uid://d2nord4buwyio" path="res://images/video game/character animation and frames/jumping static/frame 5 jumping_.png" id="6_rejip"]
+[ext_resource type="Texture2D" uid="uid://dgs26k8s4e372" path="res://images/video game/character animation and frames/jumping static/frame 6 jumping.png" id="7_xv4kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4tco"]
-size = Vector2(187.754, 186)
+size = Vector2(147.126, 186)
+
+[sub_resource type="Animation" id="Animation_w0m4y"]
+resource_name = "Jump"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fh3fh"), ExtResource("3_bfi1g"), ExtResource("4_6bcio"), ExtResource("5_fqrg0"), ExtResource("6_rejip"), ExtResource("7_xv4kt"), ExtResource("2_fh3fh")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axsfd"]
+_data = {
+"Jump": SubResource("Animation_w0m4y")
+}
 
 [node name="p1" type="Node"]
 
@@ -18,18 +44,23 @@ script = ExtResource("1_6k58f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 light_mask = 2
 visibility_layer = 19
-position = Vector2(164.375, 342)
+position = Vector2(164.882, 342)
 shape = SubResource("RectangleShape2D_a4tco")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(166.009, 348.5)
-scale = Vector2(0.255213, 0.215)
-texture = ExtResource("4_ehks6")
+position = Vector2(164.375, 341.631)
+scale = Vector2(0.445786, 0.369047)
+texture = ExtResource("2_fh3fh")
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(-333.824, 219)
+position = Vector2(-330.78, 189)
 scale = Vector2(1.01466, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
 position = Vector2(161.951, 192.5)
 scale = Vector2(3.55, 3.55)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_axsfd")
+}

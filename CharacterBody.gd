@@ -47,6 +47,7 @@ const JUMP_VELOCITY = -1000
 @export var max_jumps = 2
 @export var coyote_time_duration = 0.1
 @export var jump_buffer_duration = 0.1
+@onready var animation = $AnimationPlayer
 var jumps = 0
 var jump_time = 0
 var coyote_time = 0
@@ -85,6 +86,7 @@ func _physics_process(delta):
 			velocity.y = 500
 
 	if Input.is_action_just_pressed("ui_up"):
+		animation.play("Jump");
 		if on_floor or coyote_time > 0:
 			velocity.y = -jump_force
 			jumps += 1
