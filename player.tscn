@@ -1,19 +1,31 @@
-[gd_scene load_steps=11 format=3 uid="uid://csm8ac2ayp4us"]
+[gd_scene load_steps=26 format=3 uid="uid://csm8ac2ayp4us"]
 
 [ext_resource type="Script" path="res://CharacterBody.gd" id="1_6k58f"]
 [ext_resource type="Texture2D" uid="uid://d2u4thwdd6x8w" path="res://images/video game/character animation and frames/character standing/original.png" id="2_fh3fh"]
+[ext_resource type="Texture2D" uid="uid://c822iwffe6spj" path="res://images/video game/character animation and frames/walking/frame 1.png" id="2_jnr6s"]
 [ext_resource type="Texture2D" uid="uid://cnvfgmu0fdsg7" path="res://images/video game/character animation and frames/jumping static/frame 2 jumping_.png" id="3_bfi1g"]
 [ext_resource type="Texture2D" uid="uid://cfrd2fay6dl5e" path="res://images/video game/character animation and frames/jumping static/frame 3 jumping_.png" id="4_6bcio"]
 [ext_resource type="Texture2D" uid="uid://6r4srq1icva0" path="res://images/video game/character animation and frames/jumping static/frame 4 jumping.png" id="5_fqrg0"]
 [ext_resource type="Texture2D" uid="uid://d2nord4buwyio" path="res://images/video game/character animation and frames/jumping static/frame 5 jumping_.png" id="6_rejip"]
 [ext_resource type="Texture2D" uid="uid://dgs26k8s4e372" path="res://images/video game/character animation and frames/jumping static/frame 6 jumping.png" id="7_xv4kt"]
+[ext_resource type="Texture2D" uid="uid://djmug6chxyfam" path="res://images/video game/character animation and frames/walking/frame 2.png" id="9_xw4i3"]
+[ext_resource type="Texture2D" uid="uid://d0y75nh8lve0d" path="res://images/video game/character animation and frames/walking/frame 3.png" id="10_sb1u8"]
+[ext_resource type="Texture2D" uid="uid://c5fpb1qhn6rp6" path="res://images/video game/character animation and frames/walking/frame 4.png" id="11_niypf"]
+[ext_resource type="Texture2D" uid="uid://co400t3f5dt7c" path="res://images/video game/character animation and frames/walking/frame 5.png" id="12_carfm"]
+[ext_resource type="Texture2D" uid="uid://bgarreyp4lsss" path="res://images/video game/character animation and frames/walking/frame 6.png" id="13_ffpeb"]
+[ext_resource type="Texture2D" uid="uid://dt665nsw3rmb6" path="res://images/video game/character animation and frames/shooting and walking/frame 1 walking sho.png" id="14_qfwk2"]
+[ext_resource type="Texture2D" uid="uid://dunhikesj7sly" path="res://images/video game/character animation and frames/shooting and walking/frame 2 walking sho.png" id="15_3rbgm"]
+[ext_resource type="Texture2D" uid="uid://bk57hov8n4lgv" path="res://images/video game/character animation and frames/shooting and walking/frame 3 walking sho.png" id="16_katho"]
+[ext_resource type="Texture2D" uid="uid://nimdx6xx0120" path="res://images/video game/character animation and frames/shooting and walking/frame 4 walking sho.png" id="17_2x52y"]
+[ext_resource type="Texture2D" uid="uid://crpsiessdnqvh" path="res://images/video game/character animation and frames/shooting and walking/frame 5 walking sho.png" id="18_r3yaj"]
+[ext_resource type="Texture2D" uid="uid://btadut1tfyac1" path="res://images/video game/character animation and frames/shooting and walking/frame 6 walking sho.png" id="19_5cco2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4tco"]
 size = Vector2(147.126, 186)
 
 [sub_resource type="Animation" id="Animation_w0m4y"]
 resource_name = "Jump"
-length = 1.5
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,9 +39,59 @@ tracks/0/keys = {
 "values": [ExtResource("2_fh3fh"), ExtResource("3_bfi1g"), ExtResource("4_6bcio"), ExtResource("5_fqrg0"), ExtResource("6_rejip"), ExtResource("7_xv4kt"), ExtResource("2_fh3fh")]
 }
 
+[sub_resource type="Animation" id="Animation_qs3yt"]
+resource_name = "Walk"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fh3fh"), ExtResource("9_xw4i3"), ExtResource("10_sb1u8"), ExtResource("11_niypf"), ExtResource("12_carfm"), ExtResource("13_ffpeb"), ExtResource("2_jnr6s")]
+}
+
+[sub_resource type="Animation" id="Animation_37tdr"]
+resource_name = "Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("15_3rbgm"), ExtResource("16_katho")]
+}
+
+[sub_resource type="Animation" id="Animation_cbnlq"]
+resource_name = "shootmove"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_qfwk2"), ExtResource("15_3rbgm"), ExtResource("16_katho"), ExtResource("17_2x52y"), ExtResource("18_r3yaj"), ExtResource("19_5cco2")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axsfd"]
 _data = {
-"Jump": SubResource("Animation_w0m4y")
+"Jump": SubResource("Animation_w0m4y"),
+"Shoot": SubResource("Animation_37tdr"),
+"Walk": SubResource("Animation_qs3yt"),
+"shootmove": SubResource("Animation_cbnlq")
 }
 
 [node name="p1" type="Node"]
@@ -50,10 +112,10 @@ shape = SubResource("RectangleShape2D_a4tco")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(164.375, 341.631)
 scale = Vector2(0.445786, 0.369047)
-texture = ExtResource("2_fh3fh")
+texture = ExtResource("14_qfwk2")
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(-330.78, 189)
+position = Vector2(-260.768, 174)
 scale = Vector2(1.01466, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]

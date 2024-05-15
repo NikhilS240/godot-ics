@@ -1,47 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw8yrrabtb44l"]
+[gd_scene load_steps=6 format=3 uid="uid://bw8yrrabtb44l"]
 
 [ext_resource type="Texture2D" uid="uid://dhoqabf4s0na3" path="res://images/grass.png" id="1_i0vww"]
+[ext_resource type="Texture2D" uid="uid://dynky5o4on1hn" path="res://images/video game/backgrounds/Forest Background 1.jpg" id="1_pr5ig"]
 [ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_n3q83"]
 [ext_resource type="PackedScene" uid="uid://co5tns1ox8hyy" path="res://enemy.tscn" id="3_l54hq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqee"]
-size = Vector2(1173.5, 374.107)
+size = Vector2(1340, 374.107)
 
 [node name="Level" type="Node2D"]
 position = Vector2(-2.61469, -10.8609)
 scale = Vector2(0.997017, 1.02489)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(538.22, 356.976)
+texture = ExtResource("1_pr5ig")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(586.364, 550.167)
+position = Vector2(503.116, 738.518)
 rotation = -0.000456447
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6qqee")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2(23.8088, 1.41155)
-scale = Vector2(1.12491, 0.360676)
+position = Vector2(84.2513, -0.97525)
+scale = Vector2(1.37124, 0.360676)
 texture = ExtResource("1_i0vww")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2(-673.969, -92.0247)
+position = Vector2(-798.34, -91.1055)
 rotation = 1.56637
 shape = SubResource("RectangleShape2D_6qqee")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D/CollisionShape2D"]
-position = Vector2(0.587832, 1.41155)
+position = Vector2(-11.6693, -8.08089)
 scale = Vector2(1.15797, 0.360676)
 texture = ExtResource("1_i0vww")
 
 [node name="Enemy2" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(433.909, 77.9214)
+position = Vector2(437.921, 283.797)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-486.838, 85.7271)
+position = Vector2(-493.858, 291.603)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-61.569, 73.0429)
+position = Vector2(-62.572, 292.579)
 
 [node name="p1" parent="." instance=ExtResource("2_n3q83")]

@@ -9,10 +9,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player_chase = false
 var player = null
 var detection_range = 100
+@onready var animation = $AnimationPlayer
+
+var prev_position = Vector2.ZERO
+var is_moving = false
 
 
 var speed = 300;
 #use speed of 100
+
 
 # Define fixed_y_value outside of _physics_process
 # Define fixed_y_value outside of _physics_process
@@ -38,14 +43,31 @@ func dead():
 
 var fixed_y_value = 100  # Set the desired y-coordinate
 func _physics_process(delta):
-	if is_dead == false:
 	
-		#print("sf")
+	if prev_position != position:
+		is_moving = true
+	else:
+		is_moving = false
+	
+	if is_moving:
+		#print("Object is moving")
+		animation.play("Move")
+	else:
+		#print("Object is not moving")
+	#
+	# Update the previous position for the next frame
+		prev_position = position
+	
+	#velocity.y += gravity * delta
+	
+	if is_dead == false:
+		velocity.y += gravity * delta
+
 	
 		if player_chase:
+			
 			var x_movement = Jf.total_movement_x
-			#print("Accessed Total X Movement from Jfe: ", x_movement)
-			#print(global_position.x, "enemy ")
+	
 			if global_position.x > x_movement:
 				
 			# Lock the object's position on the x-axis
@@ -53,18 +75,15 @@ func _physics_process(delta):
 			
 			# Calculate movement only along the x-axis
 				position -= ((player.position - position) / speed)
-				#print("WE ARE AXTIVE")
+			
 			else:
 				position.y = fixed_y_value
 				position += ((player.position - position) / speed)
 
 
 
-#reverse the script betwene both
-
-
-
 func _on_area_2d_body_entered(body):
+	
 	player = body
 	player_chase = true
 
