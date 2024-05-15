@@ -1,19 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://bw8yrrabtb44l"]
 
-[ext_resource type="Texture2D" uid="uid://dhoqabf4s0na3" path="res://images/grass.png" id="1_i0vww"]
 [ext_resource type="Texture2D" uid="uid://dynky5o4on1hn" path="res://images/video game/backgrounds/Forest Background 1.jpg" id="1_pr5ig"]
+[ext_resource type="Texture2D" uid="uid://jsgnni8x4gs0" path="res://images/video game/grounds/free-seamless-grass-textures.jpg" id="2_6b6hd"]
 [ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_n3q83"]
 [ext_resource type="PackedScene" uid="uid://co5tns1ox8hyy" path="res://enemy.tscn" id="3_l54hq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqee"]
-size = Vector2(1340, 374.107)
+size = Vector2(1240.74, 95.9044)
 
 [node name="Level" type="Node2D"]
 position = Vector2(-2.61469, -10.8609)
 scale = Vector2(0.997017, 1.02489)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(538.22, 356.976)
+position = Vector2(531.166, 333.141)
+scale = Vector2(0.806759, 0.806759)
 texture = ExtResource("1_pr5ig")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -21,25 +22,16 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(503.116, 738.518)
+position = Vector2(527.827, 611.449)
 rotation = -0.000456447
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6qqee")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2(84.2513, -0.97525)
-scale = Vector2(1.37124, 0.360676)
-texture = ExtResource("1_i0vww")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2(-798.34, -91.1055)
-rotation = 1.56637
-shape = SubResource("RectangleShape2D_6qqee")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D/CollisionShape2D"]
-position = Vector2(-11.6693, -8.08089)
-scale = Vector2(1.15797, 0.360676)
-texture = ExtResource("1_i0vww")
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(528.708, 614.278)
+rotation = -0.000456447
+scale = Vector2(1.8859, 0.496047)
+texture = ExtResource("2_6b6hd")
 
 [node name="Enemy2" parent="." instance=ExtResource("3_l54hq")]
 position = Vector2(437.921, 283.797)
