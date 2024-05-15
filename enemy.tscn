@@ -1,18 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://co5tns1ox8hyy"]
+[gd_scene load_steps=11 format=3 uid="uid://co5tns1ox8hyy"]
 
 [ext_resource type="Script" path="res://enemy-mov.gd" id="1_b3mi1"]
+[ext_resource type="Texture2D" uid="uid://bm5kjmdc3q8ny" path="res://images/video game/small enemy animations and frames/goblin/frame 1 copy.png" id="2_ex6d3"]
 [ext_resource type="Texture2D" uid="uid://mf13ek2xfh7l" path="res://images/video game/character and enemy designs/goblin villian.png" id="2_yjyma"]
+[ext_resource type="Texture2D" uid="uid://cew3567iybsq2" path="res://images/video game/small enemy animations and frames/goblin/frame 2 copy.png" id="4_diw37"]
+[ext_resource type="Texture2D" uid="uid://4ynklv0gl3s1" path="res://images/video game/small enemy animations and frames/goblin/frame 3 copy.png" id="5_gy0lr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pq68h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nggnt"]
-radius = 118.106
+radius = 163.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_di7ux"]
 radius = 72.0069
 
+[sub_resource type="Animation" id="Animation_tthdn"]
+resource_name = "Move"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_yjyma"), ExtResource("4_diw37"), ExtResource("5_gy0lr"), ExtResource("2_ex6d3")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n43pg"]
+_data = {
+"Move": SubResource("Animation_tthdn")
+}
+
 [node name="Enemy" type="Node2D"]
-position = Vector2(-477, -14)
+position = Vector2(-477, 229)
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
 collision_mask = 14
@@ -23,7 +47,7 @@ collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
 material = SubResource("CanvasItemMaterial_pq68h")
-position = Vector2(598, 111)
+position = Vector2(601, 111)
 shape = SubResource("CircleShape2D_nggnt")
 debug_color = Color(0.894118, 0, 0.784314, 0.419608)
 
@@ -34,11 +58,17 @@ shape = SubResource("CircleShape2D_di7ux")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 position = Vector2(601, 106)
 scale = Vector2(0.31125, 0.24)
-texture = ExtResource("2_yjyma")
+texture = ExtResource("2_ex6d3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy"]
 position = Vector2(601, 103)
 scale = Vector2(9.1, 10.9)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
+root_node = NodePath("../VisibleOnScreenNotifier2D")
+libraries = {
+"": SubResource("AnimationLibrary_n43pg")
+}
 
 [connection signal="body_entered" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_body_exited"]
