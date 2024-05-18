@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw8yrrabtb44l"]
+[gd_scene load_steps=8 format=3 uid="uid://bw8yrrabtb44l"]
 
 [ext_resource type="Texture2D" uid="uid://dynky5o4on1hn" path="res://images/video game/backgrounds/Forest Background 1.jpg" id="1_pr5ig"]
 [ext_resource type="Texture2D" uid="uid://jsgnni8x4gs0" path="res://images/video game/grounds/free-seamless-grass-textures.jpg" id="2_6b6hd"]
 [ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_n3q83"]
 [ext_resource type="PackedScene" uid="uid://co5tns1ox8hyy" path="res://enemy.tscn" id="3_l54hq"]
 [ext_resource type="Texture2D" uid="uid://xv7pw0jau76p" path="res://images/video game/grounds/vignette-overlay-png-3.png" id="5_ujd3g"]
+[ext_resource type="Texture2D" uid="uid://hhfg6r05672p" path="res://images/video game/object assets/wooden sign post.png" id="6_3prrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqee"]
 size = Vector2(1240.74, 95.9044)
@@ -35,17 +36,21 @@ scale = Vector2(1.8859, 0.496047)
 texture = ExtResource("2_6b6hd")
 
 [node name="Enemy2" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(437.921, 283.797)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-493.858, 291.603)
+position = Vector2(308.535, 333.559)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-62.572, 292.579)
+position = Vector2(-148.829, 322.826)
 
 [node name="p1" parent="." instance=ExtResource("2_n3q83")]
 
 [node name="Vignette-overlay-png-3" type="Sprite2D" parent="."]
-position = Vector2(534.116, 370.845)
+position = Vector2(536.214, 343.316)
 scale = Vector2(0.783702, 0.598733)
 texture = ExtResource("5_ujd3g")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(1114.94, 487.721)
+scale = Vector2(0.218912, 0.218912)
+texture = ExtResource("6_3prrh")
