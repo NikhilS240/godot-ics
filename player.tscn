@@ -39,22 +39,6 @@ tracks/0/keys = {
 "values": [ExtResource("2_fh3fh"), ExtResource("3_bfi1g"), ExtResource("4_6bcio"), ExtResource("5_fqrg0"), ExtResource("6_rejip"), ExtResource("7_xv4kt"), ExtResource("2_fh3fh")]
 }
 
-[sub_resource type="Animation" id="Animation_qs3yt"]
-resource_name = "Walk"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_fh3fh"), ExtResource("9_xw4i3"), ExtResource("10_sb1u8"), ExtResource("11_niypf"), ExtResource("12_carfm"), ExtResource("13_ffpeb"), ExtResource("2_jnr6s")]
-}
-
 [sub_resource type="Animation" id="Animation_37tdr"]
 resource_name = "Shoot"
 length = 0.2
@@ -69,6 +53,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("15_3rbgm"), ExtResource("16_katho")]
+}
+
+[sub_resource type="Animation" id="Animation_qs3yt"]
+resource_name = "Walk"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fh3fh"), ExtResource("9_xw4i3"), ExtResource("10_sb1u8"), ExtResource("11_niypf"), ExtResource("12_carfm"), ExtResource("13_ffpeb"), ExtResource("2_jnr6s")]
 }
 
 [sub_resource type="Animation" id="Animation_cbnlq"]
