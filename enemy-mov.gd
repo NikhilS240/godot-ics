@@ -12,7 +12,7 @@ var detection_range = 100
 @onready var animation = $AnimationPlayer
 
 var prev_position = Vector2.ZERO
-var is_moving = false
+
 
 
 var speed = 300;
@@ -44,19 +44,18 @@ func dead():
 var fixed_y_value = 100  # Set the desired y-coordinate
 func _physics_process(delta):
 	
+	var is_moving = false
+	
 	if prev_position != position:
 		is_moving = true
+		if animation.current_animation != "Move":
+			animation.play("Move")
 	else:
-		is_moving = false
+		if animation.current_animation != "Idle":
+			animation.play("Idle")
 	
-	if is_moving:
-		#print("Object is moving")
-		animation.play("Move")
-	else:
-		#print("Object is not moving")
-	#
 	# Update the previous position for the next frame
-		prev_position = position
+	prev_position = position
 	
 	#velocity.y += gravity * delta
 	

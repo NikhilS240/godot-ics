@@ -35,3 +35,4 @@ func _on_body_entered(body):
 	body.dead()
 	print("function above doesn't work ",body.name)
 	queue_free()
+	
