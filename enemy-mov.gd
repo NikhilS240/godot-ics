@@ -67,7 +67,8 @@ func _physics_process(delta):
 		if player_chase:
 			
 			var x_movement = Jf.total_movement_x
-	
+			print(x_movement)
+			print(global_position.x)
 			if global_position.x > x_movement:
 				
 			# Lock the object's position on the x-axis

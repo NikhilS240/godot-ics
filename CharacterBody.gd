@@ -36,7 +36,7 @@ var is_dead = false
 
 func _physics_process(delta):
 	var on_floor = is_on_floor()
-
+	
 	if prev_position != position:
 		is_moving = true
 	else:

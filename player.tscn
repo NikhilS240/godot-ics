@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://btadut1tfyac1" path="res://images/video game/character animation and frames/shooting and walking/frame 6 walking sho.png" id="19_5cco2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4tco"]
-size = Vector2(147.126, 186)
+size = Vector2(102.851, 135)
 
 [sub_resource type="Animation" id="Animation_w0m4y"]
 resource_name = "Jump"
@@ -106,21 +106,21 @@ script = ExtResource("1_6k58f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 light_mask = 2
 visibility_layer = 19
-position = Vector2(164.882, 342)
+position = Vector2(-553.683, 309.5)
 shape = SubResource("RectangleShape2D_a4tco")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(164.375, 341.631)
-scale = Vector2(0.445786, 0.369047)
+position = Vector2(-554.513, 305.889)
+scale = Vector2(0.304078, 0.251733)
 texture = ExtResource("14_qfwk2")
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(-260.768, 174)
+position = Vector2(-987.266, 132)
 scale = Vector2(1.01466, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
-position = Vector2(161.951, 192.5)
-scale = Vector2(3.55, 3.55)
+position = Vector2(-556.035, 177)
+scale = Vector2(2.55574, 2.55574)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 libraries = {

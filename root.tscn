@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw8yrrabtb44l"]
+[gd_scene load_steps=11 format=3 uid="uid://bw8yrrabtb44l"]
 
 [ext_resource type="Texture2D" uid="uid://dynky5o4on1hn" path="res://images/video game/backgrounds/Forest Background 1.jpg" id="1_pr5ig"]
 [ext_resource type="Texture2D" uid="uid://jsgnni8x4gs0" path="res://images/video game/grounds/free-seamless-grass-textures.jpg" id="2_6b6hd"]
+[ext_resource type="Texture2D" uid="uid://bcv24vw0nxgpd" path="res://images/video game/object assets/image-7.png" id="2_hvu7x"]
 [ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_n3q83"]
+[ext_resource type="Texture2D" uid="uid://ua2s4iwwdn0y" path="res://images/video game/object assets/hay bale prop 2.png" id="3_kltnv"]
 [ext_resource type="PackedScene" uid="uid://co5tns1ox8hyy" path="res://enemy.tscn" id="3_l54hq"]
+[ext_resource type="Texture2D" uid="uid://hhfg6r05672p" path="res://images/video game/object assets/wooden sign post.png" id="6_3prrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq2xu"]
+size = Vector2(42.3063, 59.0502)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edvj0"]
+size = Vector2(114.133, 89.8193)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqee"]
 size = Vector2(1240.74, 95.9044)
@@ -21,6 +30,27 @@ texture = ExtResource("1_pr5ig")
 collision_layer = 4
 collision_mask = 11
 
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(713.744, 249.647)
+rotation = -0.000456447
+scale = Vector2(0.0797926, 0.0939534)
+texture = ExtResource("2_hvu7x")
+
+[node name="coincollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(715.646, 249.403)
+rotation = -0.000456447
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_yq2xu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(613.445, 411.616)
+scale = Vector2(0.125713, 0.125713)
+texture = ExtResource("3_kltnv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(604.418, 418.446)
+shape = SubResource("RectangleShape2D_edvj0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(527.827, 611.449)
 rotation = -0.000456447
@@ -32,13 +62,26 @@ rotation = -0.000456447
 scale = Vector2(1.8859, 0.496047)
 texture = ExtResource("2_6b6hd")
 
-[node name="Enemy2" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(437.921, 283.797)
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(548.25, 514.066)
+scale = Vector2(0.125713, 0.125713)
+texture = ExtResource("3_kltnv")
 
-[node name="Enemy3" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-493.858, 291.603)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(538.22, 525.774)
+shape = SubResource("RectangleShape2D_edvj0")
+
+[node name="Enemy2" parent="." instance=ExtResource("3_l54hq")]
+position = Vector2(386.768, 310.142)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-62.572, 292.579)
+position = Vector2(-283.23, 298.433)
 
 [node name="p1" parent="." instance=ExtResource("2_n3q83")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(1094.88, 498.454)
+scale = Vector2(0.219885, 0.219885)
+texture = ExtResource("6_3prrh")
