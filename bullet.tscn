@@ -9,17 +9,18 @@ size = Vector2(38, 43)
 [node name="Area2D" type="Area2D"]
 visibility_layer = 15
 collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_vggrb")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(498.75, 202.25)
+position = Vector2(460.25, 164.75)
 scale = Vector2(0.078125, 0.076875)
 texture = ExtResource("2_ikrwg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(499, 203.5)
+position = Vector2(460.5, 166)
 shape = SubResource("RectangleShape2D_mumf6")
 
 [node name="bullet" type="Node2D" parent="."]

@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlt3s41vqw2qh"]
+
+[ext_resource type="PackedScene" uid="uid://cs3wh7t85jvcf" path="res://boss.tscn" id="1_53yuc"]
+[ext_resource type="Texture2D" uid="uid://cdvd6lrh756ja" path="res://images/video game/backgrounds/night village 1.jpg" id="1_xfkut"]
+[ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_ektnj"]
+[ext_resource type="PackedScene" uid="uid://co5tns1ox8hyy" path="res://enemy.tscn" id="3_kijmc"]
+[ext_resource type="Texture2D" uid="uid://cxi2d25pv3ntq" path="res://images/video game/grounds/polished-concrete-60479f4e099f9-1200.jpg" id="5_tnslk"]
+[ext_resource type="Texture2D" uid="uid://xv7pw0jau76p" path="res://images/video game/grounds/vignette-overlay-png-3.png" id="6_m5r3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2mua"]
+size = Vector2(95.9866, 694.662)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akn2o"]
+size = Vector2(1246.28, 274.568)
+
+[node name="boss_battle" type="Node2D"]
+position = Vector2(-6, 23)
+rotation = -0.00975378
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(560.832, 327.486)
+scale = Vector2(0.98555, 1)
+texture = ExtResource("1_xfkut")
+
+[node name="bounds" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds"]
+position = Vector2(-31.6419, 270.704)
+shape = SubResource("RectangleShape2D_b2mua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/CollisionShape2D"]
+position = Vector2(1215.49, 57.8582)
+shape = SubResource("RectangleShape2D_b2mua")
+
+[node name="player" parent="." instance=ExtResource("2_ektnj")]
+position = Vector2(37.1835, -18.6382)
+
+[node name="boss" parent="." instance=ExtResource("1_53yuc")]
+position = Vector2(534.682, 35.2168)
+rotation = 0.000522922
+
+[node name="Enemy4" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(-474.43, 759.409)
+scale = Vector2(0.929808, 1)
+
+[node name="Enemy5" parent="Enemy4" instance=ExtResource("3_kijmc")]
+position = Vector2(-223.367, -238.037)
+scale = Vector2(0.852051, 1)
+
+[node name="Enemy6" parent="Enemy4" instance=ExtResource("3_kijmc")]
+position = Vector2(-257.508, -469.358)
+scale = Vector2(0.903131, 1)
+
+[node name="Enemy7" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(2547.31, 4534.81)
+scale = Vector2(0.705161, 1)
+
+[node name="Enemy6" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(2182.08, 3779.01)
+scale = Vector2(0.747435, 1)
+
+[node name="Enemy5" parent="Enemy6" instance=ExtResource("3_kijmc")]
+position = Vector2(-3910.49, -3704.23)
+scale = Vector2(1.19085, 1)
+
+[node name="Enemy5" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(488.651, 755.802)
+scale = Vector2(0.943441, 1)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(222.557, 764.207)
+scale = Vector2(0.957274, 1)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(16.5763, 761.198)
+scale = Vector2(0.971309, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("3_kijmc")]
+position = Vector2(-265.254, 742.448)
+scale = Vector2(0.98555, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(611.719, 646.997)
+rotation = 0.000522922
+
+[node name="FLOOR" type="Sprite2D" parent="."]
+position = Vector2(563.129, 584.263)
+scale = Vector2(1.19635, 0.230208)
+texture = ExtResource("5_tnslk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(605.307, 616.378)
+rotation = 0.000522922
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(6.4272, 30.6157)
+shape = SubResource("RectangleShape2D_akn2o")
+debug_color = Color(0.615686, 0, 0, 0.419608)
+
+[node name="VIENTTE" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-47.2443, -221.89)
+texture = ExtResource("6_m5r3b")

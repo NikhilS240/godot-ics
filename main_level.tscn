@@ -1,0 +1,180 @@
+[gd_scene load_steps=23 format=3 uid="uid://dspowrej87fes"]
+
+[ext_resource type="Texture2D" uid="uid://rcjrmg350sco" path="res://images/video game/backgrounds/image-3.png" id="1_3ikn0"]
+[ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="1_n2tmv"]
+[ext_resource type="Script" path="res://StaticBody2D.gd" id="2_5624m"]
+[ext_resource type="Texture2D" uid="uid://djqv2m14qycuq" path="res://images/video game/object assets/barrel prop.png" id="3_3buyh"]
+[ext_resource type="Texture2D" uid="uid://dw7n2txntoveb" path="res://images/video game/object assets/wooden gate prop.png" id="4_jof2p"]
+[ext_resource type="Texture2D" uid="uid://c7bp717i53l2x" path="res://images/video game/object assets/heart.png" id="6_4lkwr"]
+[ext_resource type="Texture2D" uid="uid://cah2vtc2r6i4l" path="res://images/video game/object assets/water well prop.png" id="6_uaf78"]
+[ext_resource type="Script" path="res://movement.gd" id="7_cwg85"]
+[ext_resource type="Script" path="res://CrateProp.gd" id="7_mvyl3"]
+[ext_resource type="Texture2D" uid="uid://coyp3p81ysnyt" path="res://images/video game/small enemy animations and frames/witch/frame 1.png" id="7_xranj"]
+[ext_resource type="Script" path="res://ef.gd" id="11_kmue5"]
+[ext_resource type="AudioStream" uid="uid://ccoytbxqklqri" path="res://ouch.mp3" id="11_p3ckv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti1fx"]
+size = Vector2(115.5, 87.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttney"]
+size = Vector2(190, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmuir"]
+size = Vector2(20, 635)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goyj2"]
+size = Vector2(38, 639.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yfxs"]
+size = Vector2(1234.62, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3js6b"]
+size = Vector2(458.5, 268)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da7ue"]
+size = Vector2(400.745, 357.341)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hts0f"]
+font_size = 33
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyrqn"]
+size = Vector2(139, 256.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnrx6"]
+size = Vector2(141.75, 255)
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(587, 280)
+scale = Vector2(1.15495, 1.15495)
+texture = ExtResource("1_3ikn0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("2_5624m")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(53.25, 207.25)
+shape = SubResource("RectangleShape2D_ti1fx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1106, 284)
+shape = SubResource("RectangleShape2D_ttney")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 272.5)
+shape = SubResource("RectangleShape2D_mmuir")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1162, 313)
+shape = SubResource("RectangleShape2D_goyj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(603.688, 640)
+shape = SubResource("RectangleShape2D_4yfxs")
+
+[node name="collidiable obj" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(454.75, 477)
+shape = SubResource("RectangleShape2D_3js6b")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_n2tmv")]
+position = Vector2(-62, 227)
+scale = Vector2(0.75, 0.76)
+up_direction = Vector2(1.04082e-12, -1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(67.5477, 207.25)
+scale = Vector2(0.134976, 0.104167)
+texture = ExtResource("3_3buyh")
+
+[node name="WaterWellProp2" type="Sprite2D" parent="."]
+position = Vector2(1094, 285)
+scale = Vector2(0.144438, 0.144345)
+texture = ExtResource("6_uaf78")
+
+[node name="WoodenGateProp" type="Sprite2D" parent="."]
+position = Vector2(1091, 188)
+scale = Vector2(0.163095, 0.163095)
+texture = ExtResource("4_jof2p")
+
+[node name="heart" type="Sprite2D" parent="."]
+position = Vector2(1044, 496)
+scale = Vector2(0.195833, 0.195833)
+texture = ExtResource("6_4lkwr")
+script = ExtResource("7_mvyl3")
+
+[node name="Area2D" type="Area2D" parent="heart"]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heart/Area2D"]
+position = Vector2(-6.33008, 0.0532227)
+shape = SubResource("RectangleShape2D_da7ue")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1032.0
+offset_top = 72.0
+offset_right = 1156.0
+offset_bottom = 118.0
+text = "PRESS P"
+label_settings = SubResource("LabelSettings_hts0f")
+
+[node name="WaterWellProp" type="Sprite2D" parent="."]
+position = Vector2(443.943, 471.5)
+scale = Vector2(0.283929, 0.303571)
+texture = ExtResource("6_uaf78")
+
+[node name="firstenemy" type="CharacterBody2D" parent="."]
+position = Vector2(10, 101)
+script = ExtResource("7_cwg85")
+
+[node name="Area2D" type="Area2D" parent="firstenemy"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="firstenemy/Area2D"]
+position = Vector2(558.5, 219.75)
+shape = SubResource("RectangleShape2D_pyrqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="firstenemy"]
+position = Vector2(555, 213)
+scale = Vector2(0.346753, 0.346753)
+texture = ExtResource("7_xranj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="firstenemy"]
+position = Vector2(557.125, 219.5)
+shape = SubResource("RectangleShape2D_wnrx6")
+
+[node name="ouchie" type="AudioStreamPlayer2D" parent="firstenemy"]
+stream = ExtResource("11_p3ckv")
+
+[node name="2nd enemy" type="CharacterBody2D" parent="."]
+position = Vector2(364, 221)
+script = ExtResource("11_kmue5")
+
+[node name="Area2D" type="Area2D" parent="2nd enemy"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2nd enemy/Area2D"]
+position = Vector2(508, 217)
+shape = SubResource("RectangleShape2D_pyrqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="2nd enemy"]
+position = Vector2(506, 208)
+scale = Vector2(0.346753, 0.346753)
+texture = ExtResource("7_xranj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2nd enemy"]
+position = Vector2(509, 215)
+shape = SubResource("RectangleShape2D_wnrx6")
+
+[node name="ouchie" type="AudioStreamPlayer2D" parent="2nd enemy"]
+stream = ExtResource("11_p3ckv")
+
+[connection signal="body_entered" from="heart/Area2D" to="heart" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="firstenemy/Area2D" to="firstenemy" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="2nd enemy/Area2D" to="2nd enemy" method="_on_area_2d_body_entered"]

@@ -16,6 +16,8 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Jf="*res://jf.gd"
+Autoscript="*res://Autoscript.gd"
+PlayerH="*res://PlayerH.gd"
 
 [layer_names]
 

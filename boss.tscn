@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://cs3wh7t85jvcf"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_3huex"]
+[ext_resource type="Texture2D" uid="uid://ccffmwqeuwp12" path="res://images/video game/boss wizard animation and frames/frame_2_boss_wizard_copy-removebg-preview.png" id="1_aea8q"]
+[ext_resource type="Script" path="res://FiniteStateMachine.gd" id="3_hw6i6"]
+[ext_resource type="Script" path="res://Idle.gd" id="4_utcj5"]
+[ext_resource type="Script" path="res://Shoot.gd" id="5_rbhia"]
+[ext_resource type="Script" path="res://Follow.gd" id="6_lfvng"]
+[ext_resource type="PackedScene" uid="uid://cm4t214l35otx" path="res://bullete.tscn" id="6_vj2mr"]
+[ext_resource type="Texture2D" uid="uid://c7bp717i53l2x" path="res://images/video game/object assets/heart.png" id="8_g4omr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7kp4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aea8q")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ix4v"]
+size = Vector2(306, 308)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ovane"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_31ns6"]
+font_size = 39
+outline_size = 1
+
+[node name="bossy" type="CharacterBody2D"]
+position = Vector2(-13, -5)
+script = ExtResource("1_3huex")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(459.181, 241.375)
+scale = Vector2(0.73815, 0.663721)
+skew = 0.221657
+sprite_frames = SubResource("SpriteFrames_q7kp4")
+animation = &"Idle"
+autoplay = "Idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(448, 250)
+shape = SubResource("RectangleShape2D_4ix4v")
+
+[node name="debug" type="Label" parent="."]
+visible = false
+offset_left = 435.0
+offset_top = 50.0
+offset_right = 623.0
+offset_bottom = 150.0
+text = "Test"
+label_settings = SubResource("LabelSettings_ovane")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(487, 300)
+scale = Vector2(13, 13)
+target_position = Vector2(89.6154, -4.76923)
+collide_with_areas = true
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("3_hw6i6")
+
+[node name="Idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_utcj5")
+
+[node name="Shoot" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("5_rbhia")
+bullete_node = ExtResource("6_vj2mr")
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Shoot"]
+wait_time = 0.75
+
+[node name="Follow" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("6_lfvng")
+
+[node name="Dash" type="Node2D" parent="FiniteStateMachine"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(445, 48.5)
+scale = Vector2(0.222656, 0.222656)
+texture = ExtResource("8_g4omr")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 425.333
+offset_top = 17.0
+offset_right = 469.333
+offset_bottom = 76.0
+text = "20"
+label_settings = SubResource("LabelSettings_31ns6")
+
+[connection signal="timeout" from="FiniteStateMachine/Shoot/Timer" to="FiniteStateMachine/Shoot" method="_on_timer_timeout"]

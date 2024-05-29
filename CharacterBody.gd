@@ -1,6 +1,9 @@
 
 extends CharacterBody2D
 
+@onready var gunshot = $gunshot
+@onready var jumper = $jumper
+
 @export var speed = 300
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000
@@ -11,6 +14,8 @@ const JUMP_VELOCITY = -1000
 @export var coyote_time_duration = 0.1
 @export var jump_buffer_duration = 0.1
 @onready var animation = $AnimationPlayer
+@onready var score = $Score
+@onready var health = $HealthLab
 var jumps = 0
 var jump_time = 0
 var coyote_time = 0
@@ -35,6 +40,10 @@ var is_dead = false
 	
 
 func _physics_process(delta):
+	
+	score.text = "Score: " +str(Autoscript.score)
+	health.text = "Health: " +str(PlayerH.health)
+	
 	var on_floor = is_on_floor()
 
 	if prev_position != position:
@@ -59,11 +68,24 @@ func _physics_process(delta):
 			velocity.y = 500
 	
 	
+	
+	#print(global_position.x)
+	if global_position.x > 935 && Input.is_key_pressed(KEY_K):
+		get_tree().change_scene_to_file("res://main_level.tscn")
+		
+	if global_position.x > 935 && Input.is_key_pressed(KEY_P):
+		PlayerH.health = PlayerH.health + 30
+		get_tree().change_scene_to_file("res://tetsedwe.tscn")
+	
+
 
 	if Input.is_action_just_pressed("ui_up"):
+		
 		print("jump")
+		jumper.play()
 		animation.play("Jump", -1, 1.5);
 		if on_floor or coyote_time > 0:
+			
 			velocity.y = -jump_force
 			jumps += 1
 			jump_time = 0
@@ -71,6 +93,7 @@ func _physics_process(delta):
 			jump_buffer_time = jump_buffer_duration
 
 	if jump_buffer_time > 0:
+		Autoscript.score = Autoscript.score + 1
 		jump_buffer_time -= delta
 		if on_floor:
 			velocity.y = -jump_force
@@ -84,6 +107,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_down"):
 		print("shoot")
+		gunshot.play()
 		animation.play("Shoot", -1, 1.5);
 		var fireball = FIREBALL.instantiate()
 		#if sign($Marker2D.position.x) == 1:
@@ -93,7 +117,7 @@ func _physics_process(delta):
 		get_parent().add_child(fireball)
 		fireball.position = $Marker2D.global_position
 
-
+	
 #
 	if (Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_right")) && Input.is_action_pressed("ui_down"):
 		animation.play("shootmove")
@@ -104,12 +128,12 @@ func _physics_process(delta):
 
 	
 	if Input.is_action_pressed("ui_right"):
-		print("walk")
+		#print("walk")
 		velocity.x = speed
 		#if sign($Marker2D.position.x) == -1:
 			#$Marker2D.position.x *= -1
 	elif Input.is_action_pressed("ui_left"):
-		print("walk")
+		#print("walk")
 	#animation.play("idle")
 		velocity.x = -speed
 		#if sign($Marker2D.position.x) == 1:

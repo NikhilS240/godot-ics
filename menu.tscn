@@ -1,37 +1,154 @@
-[gd_scene load_steps=2 format=3 uid="uid://b72e7rt5mt8dc"]
+[gd_scene load_steps=5 format=3 uid="uid://b72e7rt5mt8dc"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_81cmu"]
+[ext_resource type="Texture2D" uid="uid://bwqccsfqm5vsf" path="res://images/pexels-bella-white-201200-635279.jpg" id="2_j82nm"]
+
+[sub_resource type="FontFile" id="FontFile_sk7h4"]
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/100/0/kerning_overrides/100/0 = Vector2(0, 0)
+cache/0/100/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/100/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uifwk"]
+font = SubResource("FontFile_sk7h4")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+outline_size = 14
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 520.0
+offset_top = 272.0
+offset_right = 520.0
+offset_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_81cmu")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = -395.0
+offset_top = -170.0
+offset_right = 466.0
+offset_bottom = -33.0
+text = "The Village Knight"
+label_settings = SubResource("LabelSettings_uifwk")
+
+[node name="bkrd" type="Sprite2D" parent="."]
+position = Vector2(261.444, 110.625)
+scale = Vector2(0.38428, 0.289098)
+texture = ExtResource("2_j82nm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MarginContainer/Menu"]
+custom_minimum_size = Vector2(10, 2.08165e-12)
 layout_mode = 2
 text = "Play"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/Menu"]
 layout_mode = 2
 text = "Options"
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="MarginContainer/Menu"]
 layout_mode = 2
 text = "Exit
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="Audio" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+layout_mode = 0
+offset_right = 234.0
+offset_bottom = 77.0
+
+[node name="Labels" type="VBoxContainer" parent="Audio/HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="Audio/HBoxContainer/Labels"]
+layout_mode = 2
+text = "Master"
+
+[node name="Music" type="Label" parent="Audio/HBoxContainer/Labels"]
+layout_mode = 2
+text = "Music"
+
+[node name="Sound FX" type="Label" parent="Audio/HBoxContainer/Labels"]
+layout_mode = 2
+text = "Sound FX"
+
+[node name="Slider" type="VBoxContainer" parent="Audio/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+layout_mode = 2
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+layout_mode = 2
+
+[node name="Sound FX" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+layout_mode = 2
+
+[node name="BackFromAudio" type="Button" parent="Audio"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 109.0
+offset_right = 43.0
+offset_bottom = 140.0
+text = "Back"
+
+[node name="Options2" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_top = 105.0
+offset_right = 70.0
+offset_bottom = 105.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Audio" type="Button" parent="Options2/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+
+[node name="BackFromOptions" type="Button" parent="Options2"]
+layout_mode = 0
+offset_top = -33.0
+offset_right = 45.0
+offset_bottom = -2.0
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Audio/HBoxContainer/Slider/Master" to="." method="_on_master_value_changed"]
+[connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_back_from_audio_pressed"]
+[connection signal="pressed" from="Options2/VBoxContainer/Audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="Options2/BackFromOptions" to="." method="_on_back_from_options_pressed"]

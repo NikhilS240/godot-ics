@@ -1,44 +1,100 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw8yrrabtb44l"]
+[gd_scene load_steps=13 format=3 uid="uid://bw8yrrabtb44l"]
 
-[ext_resource type="Texture2D" uid="uid://dynky5o4on1hn" path="res://images/video game/backgrounds/Forest Background 1.jpg" id="1_pr5ig"]
+[ext_resource type="Texture2D" uid="uid://bowndabvxqi8e" path="res://images/video game/backgrounds/image-5.png" id="1_nhgkc"]
 [ext_resource type="Texture2D" uid="uid://jsgnni8x4gs0" path="res://images/video game/grounds/free-seamless-grass-textures.jpg" id="2_6b6hd"]
+[ext_resource type="Texture2D" uid="uid://dhpod5gl1sq3a" path="res://images/688-6889925_black-fade-png.png" id="2_67x7e"]
 [ext_resource type="PackedScene" uid="uid://csm8ac2ayp4us" path="res://player.tscn" id="2_n3q83"]
+[ext_resource type="Script" path="res://StaticBody2D.gd" id="2_rsimp"]
 [ext_resource type="PackedScene" uid="uid://co5tns1ox8hyy" path="res://enemy.tscn" id="3_l54hq"]
+[ext_resource type="Texture2D" uid="uid://dw7n2txntoveb" path="res://images/video game/object assets/wooden gate prop.png" id="5_e13py"]
+
+[sub_resource type="GDScript" id="GDScript_8ms0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iobec"]
+size = Vector2(20, 564.084)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k31x3"]
+size = Vector2(122.952, 649.933)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqee"]
-size = Vector2(1240.74, 95.9044)
+size = Vector2(1394.16, 95.9044)
 
-[node name="Level" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_1e2b1"]
+line_spacing = 10.0
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TutLevel" type="Node2D"]
 position = Vector2(-2.61469, -10.8609)
 scale = Vector2(0.997017, 1.02489)
 
+[node name="Node" type="Node" parent="."]
+script = SubResource("GDScript_8ms0o")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(531.166, 333.141)
-scale = Vector2(0.806759, 0.806759)
-texture = ExtResource("1_pr5ig")
+position = Vector2(580.346, 177.444)
+scale = Vector2(1.21012, 1.21012)
+texture = ExtResource("1_nhgkc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 11
+script = ExtResource("2_rsimp")
+
+[node name="COLL2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1189.16, 292.579)
+shape = SubResource("RectangleShape2D_iobec")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(141.035, 257.453)
+rotation = -3.14159
+scale = Vector2(0.190983, 1.01199)
+texture = ExtResource("2_67x7e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(51.4758, 314.966)
+shape = SubResource("RectangleShape2D_k31x3")
+
+[node name="door" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1075.82, 446.742)
+scale = Vector2(0.188788, 0.332455)
+texture = ExtResource("5_e13py")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(527.827, 611.449)
+position = Vector2(548.246, 611.44)
 rotation = -0.000456447
 shape = SubResource("RectangleShape2D_6qqee")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(528.708, 614.278)
+position = Vector2(557.277, 838.979)
 rotation = -0.000456447
-scale = Vector2(1.8859, 0.496047)
+scale = Vector2(2.11911, 0.496047)
 texture = ExtResource("2_6b6hd")
 
 [node name="Enemy2" parent="." instance=ExtResource("3_l54hq")]
 position = Vector2(437.921, 283.797)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-493.858, 291.603)
-
 [node name="Enemy4" parent="." instance=ExtResource("3_l54hq")]
-position = Vector2(-62.572, 292.579)
+position = Vector2(-264.173, 252.574)
 
-[node name="p1" parent="." instance=ExtResource("2_n3q83")]
+[node name="player" parent="." instance=ExtResource("2_n3q83")]
+position = Vector2(576.334, -88.9257)
+
+[node name="info2" type="Label" parent="."]
+offset_left = 1035.7
+offset_top = 277.943
+offset_right = 1408.7
+offset_bottom = 402.943
+text = "Press K"
+label_settings = SubResource("LabelSettings_1e2b1")
+
+[node name="info" type="Label" parent="."]
+offset_left = 18.6704
+offset_top = 31.0871
+offset_right = 391.67
+offset_bottom = 156.087
+text = "Welcome to The Village Knight!
+L & R Arrow Keys -> Move
+Down Arrow -> Shoot"
+label_settings = SubResource("LabelSettings_1e2b1")

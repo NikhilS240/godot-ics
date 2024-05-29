@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://co5tns1ox8hyy"]
+[gd_scene load_steps=14 format=3 uid="uid://co5tns1ox8hyy"]
 
 [ext_resource type="Script" path="res://enemy-mov.gd" id="1_b3mi1"]
 [ext_resource type="Texture2D" uid="uid://bm5kjmdc3q8ny" path="res://images/video game/small enemy animations and frames/goblin/frame 1 copy.png" id="2_ex6d3"]
 [ext_resource type="Texture2D" uid="uid://mf13ek2xfh7l" path="res://images/video game/character and enemy designs/goblin villian.png" id="2_yjyma"]
 [ext_resource type="Texture2D" uid="uid://cew3567iybsq2" path="res://images/video game/small enemy animations and frames/goblin/frame 2 copy.png" id="4_diw37"]
 [ext_resource type="Texture2D" uid="uid://4ynklv0gl3s1" path="res://images/video game/small enemy animations and frames/goblin/frame 3 copy.png" id="5_gy0lr"]
+[ext_resource type="AudioStream" uid="uid://ccoytbxqklqri" path="res://ouch.mp3" id="6_g2poa"]
+[ext_resource type="Texture2D" uid="uid://c7bp717i53l2x" path="res://images/video game/object assets/heart.png" id="7_icy3o"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pq68h"]
 
@@ -13,21 +15,6 @@ radius = 163.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_di7ux"]
 radius = 72.0069
-
-[sub_resource type="Animation" id="Animation_ymq55"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_yjyma")]
-}
 
 [sub_resource type="Animation" id="Animation_tthdn"]
 resource_name = "Move"
@@ -50,6 +37,12 @@ _data = {
 "Move": SubResource("Animation_tthdn")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_so74r"]
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+shadow_size = 0
+
 [node name="Enemy" type="Node2D"]
 position = Vector2(-477, 229)
 
@@ -58,9 +51,10 @@ collision_mask = 14
 script = ExtResource("1_b3mi1")
 
 [node name="Area2D" type="Area2D" parent="Enemy"]
-collision_mask = 15
+collision_mask = 143
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
+visibility_layer = 129
 material = SubResource("CanvasItemMaterial_pq68h")
 position = Vector2(601, 111)
 shape = SubResource("CircleShape2D_nggnt")
@@ -73,7 +67,7 @@ shape = SubResource("CircleShape2D_di7ux")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 position = Vector2(601, 106)
 scale = Vector2(0.31125, 0.24)
-texture = ExtResource("2_ex6d3")
+texture = ExtResource("2_yjyma")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy"]
 position = Vector2(601, 103)
@@ -84,6 +78,22 @@ root_node = NodePath("../VisibleOnScreenNotifier2D")
 libraries = {
 "": SubResource("AnimationLibrary_n43pg")
 }
+
+[node name="ouchie" type="AudioStreamPlayer2D" parent="Enemy"]
+stream = ExtResource("6_g2poa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Enemy"]
+position = Vector2(601, -57)
+scale = Vector2(0.170247, 0.170247)
+texture = ExtResource("7_icy3o")
+
+[node name="Label" type="Label" parent="Enemy"]
+offset_left = 595.0
+offset_top = -72.0
+offset_right = 635.0
+offset_bottom = -33.0
+text = "1"
+label_settings = SubResource("LabelSettings_so74r")
 
 [connection signal="body_entered" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_body_exited"]

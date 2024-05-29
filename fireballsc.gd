@@ -4,6 +4,7 @@ const SPEED = 300
 var velocity = Vector2()
 var direction = 1;
 
+
 func _ready():
 	pass
 
@@ -24,14 +25,19 @@ func _physics_process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited(): #stores info in body during coll.
 	queue_free()
-	
 
 
 
 
 func _on_body_entered(body):
-	if "Enemy" in body.name:
-		print("this function works! ", body.name)
+	
+	#if "Enemy" || "bossy" in body.name:
+	print("this function works! ", body.name)
+	Autoscript.score += 10
 	body.dead()
 	print("function above doesn't work ",body.name)
 	queue_free()
+	
+
+	
+
